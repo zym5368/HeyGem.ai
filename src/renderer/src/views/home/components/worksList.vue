@@ -629,3 +629,22 @@ const downloadVideo = async (video) => {
   }
 }
 </style>
+// ...现有代码...
+<template>
+  <div class="list-data">
+    <!-- 在顶部添加批量操作按钮 -->
+    <div class="batch-actions">
+      <t-button @click="openBatchDialog">批量生成</t-button>
+    </div>
+    <!-- ...现有列表代码... -->
+  </div>
+</template>
+
+<script setup>
+// 添加批量生成对话框状态
+const batchDialogVisible = ref(false)
+
+function openBatchDialog() {
+  batchDialogVisible.value = true
+}
+</script>
