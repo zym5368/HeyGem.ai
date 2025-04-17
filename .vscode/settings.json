@@ -9,3 +9,4 @@
   "i18n-ally.translate.engines": ["deepl", "google"], // 翻译器
   "i18n-ally.extract.keygenStyle": "camelCase" // 翻译字段命名样式采用驼峰
 }
+1
