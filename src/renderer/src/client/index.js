@@ -17,5 +17,11 @@ export const Client = {
   },
   app: {
     ...window.client.app
+  },
+  video: {
+    ...window.client.video,
+    batchGenerate: (paramsList) => {
+      return window.client.video.batchGenerate(paramsList)
+    }
   }
 }
