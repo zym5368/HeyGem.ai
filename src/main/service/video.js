@@ -274,6 +274,28 @@ function modify(video) {
   return update(video)
 }
 
+// 添加批量生成方法
+export async function batchGenerateVideos(paramsList) {
+  const results = []
+  for (const params of paramsList) {
+    try {
+      const result = await generateVideo(params)
+      results.push({...result, status: 'success'})
+    } catch (error) {
+      results.push({...params, status: 'failed', error})
+    }
+  }
+  return results
+}
+
+// 在init()中暴露接口
+export function init() {
+  // ...现有handler...
+  ipcMain.handle(VIDEO_NAME + '/batchGenerate', (_, paramsList) => {
+    return batchGenerateVideos(paramsList)
+  })
+}
+
 export function init() {
   ipcMain.handle(MODEL_NAME + '/page', (event, ...args) => {
     return page(...args)
